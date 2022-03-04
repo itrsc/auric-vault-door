@@ -55,7 +55,7 @@ module Auric
 
       private
 
-      def build_post_message(method, plaintext_value)
+      def build_post_message(method, plaintext_value, id = Time.now.to_i)
         {
           'params'=>
           [{
@@ -67,11 +67,12 @@ module Auric
             'last4'=> '',
             'plaintextValue'=> plaintext_value
           }],
-          'method'=> method
+          'method'=> method,
+          'id'=>id
         }
       end
 
-      def build_get_message(method, token)
+      def build_get_message(method, token, id = Time.now.to_i)
         {
           'params'=>
           [{
@@ -80,7 +81,8 @@ module Auric
             'utcTimestamp'=> Time.now.to_i.to_s,
             'token'=> token
           }],
-          'method'=> method
+          'method'=> method,
+          'id'=>id
         }
       end
 
